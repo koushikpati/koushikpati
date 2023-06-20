@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @koushikpati
 - 👀 I’m interested in artifitial inteligence
-- 🌱 I’m currently learning data science
+- 🌱 I’m currently working as a data scientist
 - 💞️ I’m looking to collaborate on ...
 - 📫 How to reach me ...patik329@gmail.com
 

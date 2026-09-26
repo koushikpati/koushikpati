@@ -3,6 +3,6 @@ uvicorn
 fastmcp
 langchain
 langchain-google-genai
-langchain-mcp-adapter
+langchain-mcp-adapters
 python-dotenv
 pydantic

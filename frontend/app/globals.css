@@ -1,0 +1,479 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #10131a;
+  --bg-panel: #171b24;
+  --border: #2a2f3a;
+  --text: #e7e9ee;
+  --text-dim: #9aa1ae;
+  --accent: #ffb454;
+  --accent-dim: #7a6238;
+  --mono: 'JetBrains Mono', monospace;
+  --display: 'Space Grotesk', sans-serif;
+  --body: 'Inter', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  margin: 0;
+  padding: 0;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.page {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.section-title {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 1.25rem;
+  color: var(--text);
+}
+
+/* Hero */
+.hero__eyebrow {
+  font-family: var(--mono);
+  color: var(--accent);
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem;
+}
+.hero__name {
+  font-family: var(--display);
+  font-size: 2.75rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.1;
+}
+.hero__title {
+  font-family: var(--mono);
+  color: var(--text-dim);
+  margin: 0.5rem 0 1.25rem;
+}
+.hero__summary {
+  max-width: 60ch;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+.hero__links {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+}
+.hero__link {
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.9rem;
+  border-radius: 4px;
+  color: var(--text);
+}
+.hero__link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Skills */
+.skills__list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0;
+  margin: 0;
+}
+.skills__tag {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.35rem 0.7rem;
+  color: var(--text-dim);
+}
+
+/* Projects */
+.projects__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+.projects__search {
+  font-family: var(--mono);
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  min-width: 220px;
+}
+.projects__search:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.projects__empty {
+  color: var(--text-dim);
+  font-family: var(--mono);
+  font-size: 0.9rem;
+}
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.project-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.project-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.project-card__top h3 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 1.05rem;
+}
+.project-card__category {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.project-card__desc {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+.project-card__tech {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0;
+  margin: 0;
+}
+.project-card__tech li {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.15rem 0.45rem;
+}
+.project-card__links {
+  display: flex;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+/* ChatBot */
+.chatbot__window {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.chatbot__log {
+  height: 320px;
+  overflow-y: auto;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+}
+.chatbot__msg {
+  display: flex;
+  gap: 0.5rem;
+  line-height: 1.5;
+}
+.chatbot__msg--user { color: var(--text); }
+.chatbot__msg--assistant { color: var(--text-dim); }
+.chatbot__prompt {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.chatbot__dots {
+  display: inline-flex;
+  gap: 3px;
+}
+.chatbot__dots span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  animation: blink 1.2s infinite ease-in-out;
+}
+.chatbot__dots span:nth-child(2) { animation-delay: 0.2s; }
+.chatbot__dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0.2; }
+  40% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chatbot__dots span { animation: none; opacity: 0.6; }
+}
+
+.chatbot__form {
+  display: flex;
+  border-top: 1px solid var(--border);
+}
+.chatbot__input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  padding: 0.8rem 1.1rem;
+}
+.chatbot__input:focus { outline: none; }
+.chatbot__input::placeholder { color: #565d6b; }
+.chatbot__send {
+  font-family: var(--mono);
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: none;
+  padding: 0 1.25rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.chatbot__send:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.chatbot__send:hover:not(:disabled) {
+  background: var(--accent);
+  color: #10131a;
+}
+.chatbot__error {
+  color: #ff6b6b;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  padding: 0.6rem 1.1rem 0;
+}
+
+@media (max-width: 640px) {
+  .hero__name { font-size: 2rem; }
+  .page { padding: 3rem 1.25rem 4rem; gap: 3rem; }
+}
+
+
+
+/* ============================================================
+   Add this block to the END of your existing globals.css.
+   Uses your existing --bg, --bg-panel, --border, --text,
+   --text-dim, --accent, --mono, --display variables — no new
+   tokens introduced.
+   ============================================================ */
+
+/* Nav */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: rgba(16, 19, 26, 0.85); /* var(--bg) with transparency for blur effect */
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+.nav-logo:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-size: 1rem;
+  padding: 0.35rem 0.6rem;
+  cursor: pointer;
+}
+.nav-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+.nav-links a {
+  color: var(--text-dim);
+}
+.nav-links a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .nav-toggle {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg-panel);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links-open {
+    display: flex;
+  }
+  .nav-links li {
+    border-top: 1px solid var(--border);
+  }
+  .nav-links a {
+    display: block;
+    padding: 0.9rem 1.5rem;
+  }
+}
+
+/* Footer */
+.footer {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+.footer-links a {
+  color: var(--text-dim);
+}
+.footer-links a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer-copy {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin: 0;
+  opacity: 0.7;
+}
+
+/* Loading skeletons — used by src/app/loading.tsx */
+.skeleton {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+  animation: shimmer 1.6s infinite;
+}
+.skeleton-hero {
+  height: 180px;
+}
+.skeleton-line {
+  height: 20px;
+  width: 60%;
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after { animation: none; }
+}
+
+/* Error page */
+.error-page {
+  align-items: center;
+  text-align: center;
+}
+.error-page button {
+  font-family: var(--mono);
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem 1.25rem;
+  cursor: pointer;
+}
+.error-page button:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* Visually-hidden utility — used by ChatBot.tsx for screen-reader-only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

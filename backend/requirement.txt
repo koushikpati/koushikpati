@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+fastmcp
+langchain
+langchain-google-genai
+langchain-mcp-adapter
+python-dotenv
+pydantic

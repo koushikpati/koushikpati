@@ -1,0 +1,117 @@
+{
+  "name": "Koushik Pati",
+  "title": "Data Scientist & AI Engineer",
+  "summary": "Passionate developer building intelligent systems with Python and LLMs.",
+  "experience": [
+    {
+      "company": "Tata Steel",
+      "role": "Data Scientist",
+      "duration": " 01/08/2022–25/10/2025",
+      "description": "Worked on developing machine learning models for predictive maintenance and process optimization.",
+      "highlights": ["Built microservices", "Led team of 4", "Reduced latency by 40%"]
+    },
+    {
+      "company": "Capgemini",
+      "role": "AI Engineer",
+      "duration": " 27/10/2022–Present",
+      "description": "AI Engineer building autonomous LLM-based agents using prompt engineering, RAG, and orchestration frameworks (LangChain, LangGraph) to automate complex, multi-step enterprise workflows.",
+      "highlights": ["Built Agentic AI Solutions", "Led team of 2", "FTE Productivity gain by 13%"]
+    },
+    {
+      "company": "Flipkart",
+      "role": "Data Science Extern",
+      "duration": " 01/011/2021–30/06/2022",
+      "description": "M.Tech thesis in collaboration with the Indian Statistical Institute worked on domain adaptation using pre-trained NLP models.",
+      "highlights": ["Built microservices", "Led team of 4", "Reduced latency by 40%"]
+    }
+
+  ],
+  "education": [
+    {
+      "degree": "M.Tech Computer Science",
+      "institution": "ISI Kolkata",
+      "year": "2022",
+      "percentage": "70%",
+      "thesis": "Domain Adaptation using Pre-trained NLP Models",
+      "courses": ["Probability & Statistics","Operating Systems","Data Structures & Algorithms","Mathematical Optimization","Image Processing","Computer Vision","DBMS","Machine Learning", "Deep Learning", "Natural Language Processing"]
+    },
+    {
+      "degree": "M.sc in Mathematics",
+      "institution": "University of Hyderbad",
+      "year": "2018",
+      "percentage":"7.45 CGPA"
+    },
+    {
+      "degree": "B.Sc in Mathematics",
+      "institution": "Midnapore College",
+      "year":"2015",
+      "percentage": "63.25%"
+    }
+  ],
+  "skills": ["Python", "Data Science", "FastAPI","Generative AI", "LangChain", "Docker", "Azure","GCP"],
+  "skill":{
+  "generative_ai": [
+    "LLMs",
+    "RAG",
+    "Agentic AI",
+    "Model Context Protocol (MCP)",
+    "Context Engineering",
+    "LangChain",
+    "LangGraph"
+  ],
+  "evaluation_and_observability": [
+    "LangSmith",
+    "Confident AI/DeepEval"
+  ],
+  "reliability_and_safety": [
+    "DeepTeam"
+  ],
+  "programming_languages": [
+    "Python",
+    "SQL"
+  ],
+  "frameworks": [
+    "FastAPI",
+    "Streamlit",
+    "TensorFlow",
+    "PyTorch",
+    "Scikit-learn",
+    "Google's ADK"
+  ],
+  "devops_and_tools": [
+    "Git",
+    "GitHub",
+    "GitHub Actions (CI/CD)",
+    "Docker",
+    "MLflow"
+  ],
+  "cloud_platforms": [
+    "Google Cloud Platform (Vertex AI)",
+    "Azure"
+  ],
+  "data_science_and_ml": [
+    "Machine Learning",
+    "Deep Learning",
+    "NLP",
+    "Time Series Forecasting",
+    "Reinforcement Learning"
+  ]
+},
+  "contact": {
+    "email": "patik329@gmail.com,mr.koushikpati@gmail.com",
+    "github": "https://github.com/koushikpati",
+    "linkedin": "https://www.linkedin.com/in/kpati/",
+    "mobile": "+91 9647547097"
+  },
+  "Preferences": {
+    "workEnvironment": "Remote, Hybrid, On-site",
+    "prefered role": "Data Scientist, AI Engineer, Machine Learning Engineer",
+    "prefered location": "Kolkata, Hyderabad, Bangalore",
+    "workType": "Full-time",
+    "noticePeriod": "90 days",
+    "current  fixed CTC": "₹ 23,60,000",
+    "current  variable CTC": "n/a",
+    "expected  fixed CTC": "20% hike,negotiable"
+
+  }
+}

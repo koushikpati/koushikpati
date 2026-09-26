@@ -1,0 +1,84 @@
+[
+  {
+    "id": 1,
+    "name": "AI Portfolio System",
+    "description": "Agentic portfolio with FastMCP + LangChain",
+    "tech": ["Python", "FastMCP", "LangChain", "React"],
+    "github": "https://github.com/you/portfolio",
+    "live": "https://yourportfolio.vercel.app",
+    "category": "AI"
+  },
+  
+  {
+    "id": 2,
+    "name": "Vendor Invoice Management Agentic AI System",
+    "description": "Developed an Agentic AI system for Vendor Invoice Management to automate invoice intake, processing, and validation through human-in-the-loop review, improving accuracy and reducing manual effort. Implemented event driven workflows enabling orchestration of invoice processing stages and seamless integration with SAP VIM API. Delivers a 13% FTE productivity gain by automating the processing of 4,000 invoices/month.",
+    "tech": ["Python", "LangChain", "LangGraph", "Azure Logic Apps", "Azure Service Bus", "PostgreSQL", "Azure Functions API", "Azure Blob Storage", "SAP VIM API"],
+    "github": null,
+    "live": null,
+    "category": "AI"
+  },
+  {
+    "id": 3,
+    "name": "Cash Application Multi-Agent Workflow",
+    "description": "Built multi-agent workflows for cash application including bank statement/remittance/invoice extraction, customer identification, and payment matching (exact match, over/under-payment routing) with human-in-the-loop checkpoints.",
+    "tech": ["Azure Logic Apps", "LangChain", "Python"],
+    "github": null,
+    "live": null,
+    "category": "AI"
+  },
+  {
+    "id": 4,
+    "name": "Dispute Resolution Agentic System",
+    "description": "Built an agentic system for dispute resolution covering ticket ingestion, user validation, dispute classification, and confidence-based routing with AI agents (Dispute Analyzer, Discrepancy Check, Re-Invoice Generation).",
+    "tech": ["Azure Logic Apps", "LangChain", "Python"],
+    "github": null,
+    "live": null,
+    "category": "AI"
+  },
+  {
+    "id": 5,
+    "name": "AI-Powered Steel Plant Safety Learning & Simulation Platform",
+    "description": "Developed an AI-powered workplace safety learning platform enabling image-based safety hazard detection, semantic merging of human and AI observations, expert validation workflows, and automated participant scoring.",
+    "tech": ["Python", "FastAPI", "Google Vertex AI", "Gemini", "MySQL"],
+    "github": null,
+    "live": null,
+    "category": "AI"
+  },
+  {
+    "id": 6,
+    "name": "Weekly Insight Generation Framework (Gen AI)",
+    "description": "Built a production-grade LLM + RAG pipeline for automated news classification and insight generation, reducing manual analysis effort by 70%; benchmarked LLM models across AWS, GCP, and Azure to optimize cost-performance trade-offs.",
+    "tech": ["LLM", "RAG", "AWS", "GCP", "Azure", "Python"],
+    "github": null,
+    "live": null,
+    "category": "AI"
+  },
+  {
+    "id": 7,
+    "name": "Data Science Project Documentation Agentic AI System",
+    "description": "Developed a multi-tool agent framework that autonomously parses BRD requirements, executes sandboxed code for EDA/testing, and synthesizes findings into standardized technical documentation, cutting documentation effort by 70% and improving handover efficiency by 50%.",
+    "tech": ["Python", "Agentic AI", "LLM"],
+    "github": null,
+    "live": null,
+    "category": "AI"
+  },
+  {
+    "id": 8,
+    "name": "Sinter Plant Digital Twin",
+    "description": "Deployed ensemble/deep learning models (XGBoost, Random Forest, LSTM, SAM-KNN) for real-time sinter plant optimization, improving emission KPIs by 10% and cutting return fines by 5%.",
+    "tech": ["XGBoost", "Random Forest", "LSTM", "SAM-KNN", "Python"],
+    "github": null,
+    "live": null,
+    "category": "Machine Learning"
+  },
+  {
+    "id": 9,
+    "name": "Ferro-Niobium Optimization",
+    "description": "Built a Random Forest model reducing ferro-niobium consumption by 15% monthly.",
+    "tech": ["Random Forest", "Python", "Machine Learning"],
+    "github": null,
+    "live": null,
+    "category": "Machine Learning"
+  }
+]

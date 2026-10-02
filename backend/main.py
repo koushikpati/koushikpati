@@ -40,7 +40,7 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 # any third-party site.
 # ---------------------------------------------------------------------------
 ALLOWED_ORIGINS = [
-    "https://frontend-kp-4316.vercel.app/",  # <-- replace with your real domain
+    "https://frontend-kp-4316.vercel.app",  # <-- replace with your real domain
     "http://localhost:3000",              # local dev only — remove in prod if you want to be strict
 ]
 

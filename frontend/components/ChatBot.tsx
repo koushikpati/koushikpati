@@ -38,13 +38,12 @@ export default function ChatBot() {
     try {
       const data = await sendChatMessage(text);
       setMessages((prev) => [...prev, { role: "assistant", content: data.reply }]);
-    } catch (err) {
+  } catch {
       setError("Couldn't reach the assistant. Is the backend running?");
-    } finally {
+  } finally {
       setLoading(false);
-    }
+    } 
   }
-
   return (
     <section className="chatbot">
       <h2 className="section-title">Ask the assistant</h2>

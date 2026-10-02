@@ -21,7 +21,7 @@ export default function Hero({ resume }: { resume?: Resume | null }) {
 
   return (
     <section id="about" className="hero">
-      <p className="hero__eyebrow">// whoami</p>
+      <p className="hero__eyebrow">{"//whoami"}</p>
       <h1 className="hero__name">{name}</h1>
       <p className="hero__title">{title}</p>
       <p className="hero__summary">{summary}</p>

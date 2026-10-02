@@ -1,6 +1,7 @@
 import json
 import os
 from pathlib import Path
+
 from fastmcp import FastMCP
 
 mcp = FastMCP("Portfolio MCP Server")

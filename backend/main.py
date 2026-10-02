@@ -4,12 +4,12 @@ import time
 import uuid
 from pathlib import Path
 
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from slowapi import Limiter, _rate_limit_exceeded_handler
-from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
+from slowapi.util import get_remote_address
 
 from agent import ask_agent
 
@@ -40,7 +40,7 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 # any third-party site.
 # ---------------------------------------------------------------------------
 ALLOWED_ORIGINS = [
-    "https://your-portfolio.vercel.app",  # <-- replace with your real domain
+    "https://frontend-kp-4316.vercel.app/",  # <-- replace with your real domain
     "http://localhost:3000",              # local dev only — remove in prod if you want to be strict
 ]
 
@@ -123,13 +123,13 @@ async def chat(request: Request, req: ChatRequest):
 
 @app.get("/projects")
 @limiter.limit("30/minute")
-async def projects(request: Request):
+def projects(request: Request):
     with open(DATA_DIR / "projects.json") as f:
         return json.load(f)
 
 
 @app.get("/resume")
 @limiter.limit("30/minute")
-async def resume(request: Request):
+def resume(request: Request):
     with open(DATA_DIR / "resume.json") as f:
         return json.load(f)

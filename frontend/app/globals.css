@@ -202,8 +202,9 @@ a:hover { text-decoration: underline; }
   display: flex;
   flex-direction: column;
 }
+
 .chatbot__log {
-  height: 320px;
+  height: clamp(320px, 55vh, 460px); /* was fixed 320px; taller on bigger screens */
   overflow-y: auto;
   padding: 1rem 1.1rem;
   display: flex;
@@ -212,6 +213,7 @@ a:hover { text-decoration: underline; }
   font-family: var(--mono);
   font-size: 0.88rem;
 }
+
 .chatbot__msg {
   display: flex;
   gap: 0.5rem;
@@ -219,13 +221,116 @@ a:hover { text-decoration: underline; }
 }
 .chatbot__msg--user { color: var(--text); }
 .chatbot__msg--assistant { color: var(--text-dim); }
+
 .chatbot__prompt {
   color: var(--accent);
   flex-shrink: 0;
 }
+
+/* Message body: wraps beside the prompt instead of under it */
+.chatbot__content {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* User text keeps exactly what was typed */
+.chatbot__plain {
+  white-space: pre-wrap;
+}
+
+/* Bot reply rendered from Markdown.
+   Don't use pre-wrap here: Markdown handles its own line breaks. */
+.chatbot__md {
+  white-space: normal;
+}
+.chatbot__md > :first-child { margin-top: 0; }
+.chatbot__md > :last-child { margin-bottom: 0; }
+
+.chatbot__md p { margin: 0 0 0.6em; }
+
+.chatbot__md ul,
+.chatbot__md ol {
+  margin: 0.4em 0 0.8em;
+  padding-left: 1.4em;
+}
+.chatbot__md ul { list-style: disc; }
+.chatbot__md ol { list-style: decimal; }
+.chatbot__md li { margin-bottom: 0.3em; }
+.chatbot__md li::marker { color: var(--accent); }
+.chatbot__md li > ul,
+.chatbot__md li > ol { margin: 0.3em 0; }
+
+.chatbot__md strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.chatbot__md em { font-style: italic; }
+
+.chatbot__md code {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 0.92em;
+}
+.chatbot__md pre {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.75em 1em;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+.chatbot__md pre code {
+  background: none;
+  padding: 0;
+}
+
+.chatbot__md a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.chatbot__md table {
+  border-collapse: collapse;
+  margin: 0.5em 0;
+}
+.chatbot__md th,
+.chatbot__md td {
+  border: 1px solid var(--border);
+  padding: 0.3em 0.6em;
+}
+
+/* Suggestion chips (shown before the first message) */
+.chatbot__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.chatbot__chip {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.chatbot__chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.chatbot__chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Typing indicator */
 .chatbot__dots {
   display: inline-flex;
   gap: 3px;
+  align-items: center;
 }
 .chatbot__dots span {
   width: 5px;
@@ -236,20 +341,25 @@ a:hover { text-decoration: underline; }
 }
 .chatbot__dots span:nth-child(2) { animation-delay: 0.2s; }
 .chatbot__dots span:nth-child(3) { animation-delay: 0.4s; }
+
 @keyframes blink {
   0%, 80%, 100% { opacity: 0.2; }
   40% { opacity: 1; }
 }
+
 @media (prefers-reduced-motion: reduce) {
   .chatbot__dots span { animation: none; opacity: 0.6; }
+  .chatbot__chip { transition: none; }
 }
 
+/* Input row */
 .chatbot__form {
   display: flex;
   border-top: 1px solid var(--border);
 }
 .chatbot__input {
   flex: 1;
+  min-width: 0;
   background: transparent;
   border: none;
   color: var(--text);
@@ -259,6 +369,7 @@ a:hover { text-decoration: underline; }
 }
 .chatbot__input:focus { outline: none; }
 .chatbot__input::placeholder { color: #565d6b; }
+
 .chatbot__send {
   font-family: var(--mono);
   background: var(--accent-dim);
@@ -276,6 +387,11 @@ a:hover { text-decoration: underline; }
   background: var(--accent);
   color: #10131a;
 }
+.chatbot__send:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
 .chatbot__error {
   color: #ff6b6b;
   font-family: var(--mono);
@@ -283,9 +399,30 @@ a:hover { text-decoration: underline; }
   padding: 0.6rem 1.1rem 0;
 }
 
-@media (max-width: 640px) {
-  .hero__name { font-size: 2rem; }
-  .page { padding: 3rem 1.25rem 4rem; gap: 3rem; }
+/* Streaming: waiting state (before first token) */
+.chatbot__waiting {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.chatbot__status {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* Streaming: blinking caret at the end of the text being written */
+.chatbot__msg--streaming .chatbot__md > :last-child::after {
+  content: "▍";
+  color: var(--accent);
+  margin-left: 2px;
+  animation: caret 1s steps(1) infinite;
+}
+@keyframes caret {
+  50% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chatbot__msg--streaming .chatbot__md > :last-child::after { animation: none; }
 }
 
 
@@ -476,4 +613,109 @@ a:hover { text-decoration: underline; }
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* ============================================================
+   Portfolio redesign: hero + chat, featured work, stack, experience
+   ============================================================ */
+html { scroll-behavior: smooth; }
+section[id], footer[id] { scroll-margin-top: 5rem; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.page { max-width: 1100px; gap: 4.5rem; }
+.footer { max-width: 1100px; }
+.footer__title { font-family: var(--display); font-size: 1.3rem; margin: 0; }
+.nav-resume { border: 1px solid var(--border); border-radius: 4px; padding: 0.25rem 0.6rem; }
+
+/* Hero + chat */
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+.hero-grid .chatbot__log { height: clamp(340px, 48vh, 440px); }
+.hero__summary { margin: 0 0 1.5rem; }
+.hero__links { flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+
+.metrics {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+.metric {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.metric__value { font-family: var(--display); font-size: 1.6rem; font-weight: 700; line-height: 1.1; }
+.metric__label { font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim); }
+
+.btn {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  border-radius: 4px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  border: 1px solid var(--accent);
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+.btn:hover { background: var(--accent); color: var(--bg); }
+.link-btn {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--accent);
+  cursor: pointer;
+}
+.link-btn:hover { text-decoration: underline; }
+
+.chatbot__bar { padding: 0.65rem 1.1rem; border-bottom: 1px solid var(--border); }
+.chatbot__bar h2 { margin: 0; font-family: var(--mono); font-size: 0.8rem; font-weight: 500; color: var(--text-dim); }
+.chatbot__input::placeholder { color: #7a8190; }
+
+/* Featured work */
+.projects__header .section-title { margin: 0; }
+.projects__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.project-card { transition: border-color 0.15s; }
+.project-card:hover { border-color: var(--accent-dim); }
+.project-card__highlight { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); margin: 0; }
+.project-card__desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.project-card__links { margin-top: auto; }
+
+/* Stack + experience */
+.split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; }
+.stack { margin: 0; display: flex; flex-direction: column; gap: 0.9rem; }
+.stack__row { display: grid; grid-template-columns: 4rem minmax(0, 1fr); gap: 0.75rem; align-items: baseline; }
+.stack dt { font-family: var(--mono); font-size: 0.75rem; color: var(--text-dim); }
+.stack dd { margin: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.stack__more { font-family: var(--mono); font-size: 0.75rem; color: var(--text-dim); align-self: center; }
+
+.exp { list-style: none; margin: 0 0 1rem; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+.exp li { display: flex; flex-direction: column; gap: 0.15rem; border-left: 2px solid var(--border); padding-left: 0.9rem; }
+.exp__role { font-family: var(--display); font-weight: 500; }
+.exp__meta { font-family: var(--mono); font-size: 0.78rem; color: var(--text-dim); }
+
+@media (max-width: 900px) {
+  .hero-grid, .split { grid-template-columns: minmax(0, 1fr); }
+  .projects__grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .project-card { transition: none; }
 }

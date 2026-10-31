@@ -32,7 +32,7 @@ export function getProjects() {
 
 // POST /chat — send a message to the LangChain + FastMCP agent
 export function sendChatMessage(message: string) {
-  return request("/chat", {
+  return request<{ reply: string }>("/chat", {
     method: "POST",
     body: JSON.stringify({ message }),
   });

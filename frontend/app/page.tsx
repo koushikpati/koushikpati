@@ -8,6 +8,7 @@ import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import { getResume, getProjects } from "@/lib/api";
+import type { Resume } from "@/lib/resume";
 
 export default async function HomePage() {
   const [resume, projects] = await Promise.all([
@@ -21,10 +22,10 @@ export default async function HomePage() {
         <Hero resume={resume} />
         <ChatBot />
       </div>
-      <Projects projects={projects} />
+      <Projects projects={projects as Parameters<typeof Projects>[0]["projects"]} />
       <div className="split">
         <Skills skill={resume?.skill} skills={resume?.skills} />
-        <Experience items={resume?.experience} />
+        <Experience items={resume?.experience as Parameters<typeof Experience>[0]["items"]} />
       </div>
     </main>
   );

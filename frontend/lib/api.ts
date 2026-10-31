@@ -2,10 +2,10 @@
 // Thin client around the FastAPI backend. Reads the base URL from
 // NEXT_PUBLIC_API_URL so it can point at localhost in dev and your
 // Render/Railway deployment in prod.
-
+import type { Resume,Project } from "@/lib/resume";
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
-async function request(path: string, options: RequestInit = {}) {
+async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const res = await fetch(`${API_URL}${path}`, {
     headers: { "Content-Type": "application/json" },
     ...options,
@@ -16,12 +16,13 @@ async function request(path: string, options: RequestInit = {}) {
     throw new Error(`API ${path} failed: ${res.status} ${text}`);
   }
 
-  return res.json();
+  return (await res.json()) as T;
 }
 
 // GET /resume — full resume payload (experience, education, skills, contact)
+// GET /resume: full resume payload (experience, education, skills, contact)
 export function getResume() {
-  return request("/resume", { cache: "no-store" });
+  return request<Resume>("/resume", { cache: "no-store" });
 }
 
 // GET /projects — full project list

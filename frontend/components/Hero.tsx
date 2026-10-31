@@ -1,8 +1,7 @@
 import AskButton from "./AskButton";
+import type { Resume } from "@/lib/resume";
 
-type Metric = { value: string; label: string };
-
-export default function Hero({ resume }: { resume: any }) {
+export default function Hero({ resume }: { resume: Resume | null}) {
   if (!resume) return null;
   const c = resume.contact ?? {};
   const email = String(c.email ?? "").split(",")[0].trim();
@@ -19,9 +18,9 @@ export default function Hero({ resume }: { resume: any }) {
       <p className="hero__title">{resume.title}</p>
       <p className="hero__summary">{resume.tagline ?? resume.summary}</p>
 
-      {resume.metrics?.length > 0 && (
+      {(resume.metrics?.length ?? 0) > 0 && (
         <ul className="metrics">
-          {resume.metrics.map((m: Metric) => (
+          {resume.metrics?.map((m) => (
             <li key={m.label} className="metric">
               <span className="metric__value">{m.value}</span>
               <span className="metric__label">{m.label}</span>

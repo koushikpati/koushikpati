@@ -14,26 +14,26 @@ const SITE_URL = "https://yourdomain.com"; // <-- replace with your real domain
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Your Name — Software Engineer",
-    template: "%s | Your Name",
+    default: "Koushik Pati — Data Scientist & AI Engineer",
+    template: "%s | Koushik Pati",
   },
   description:
-    "Portfolio of Your Name — software engineer working on AI agents, backend systems, and full-stack applications.",
-  keywords: ["software engineer", "portfolio", "full stack developer", "AI", "LangChain"],
-  authors: [{ name: "Your Name", url: SITE_URL }],
+    "Portfolio of Koushik Pati — data scientist and AI engineer building agentic AI systems and ML solutions.",
+  keywords: ["data scientist", "AI engineer", "agentic AI", "LangChain", "portfolio"],
+  authors: [{ name: "Koushik Pati", url: SITE_URL }],
   openGraph: {
     type: "website",
     url: SITE_URL,
-    title: "Your Name — Software Engineer",
+    title: "Koushik Pati — Data Scientist & AI Engineer",
     description:
-      "Portfolio of Your Name — software engineer working on AI agents, backend systems, and full-stack applications.",
-    siteName: "Your Name Portfolio",
+      "Portfolio of Koushik Pati — data scientist and AI engineer building agentic AI systems and ML solutions.",
+    siteName: "Koushik Pati Portfolio",
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Your Name — Software Engineer",
-    description: "Portfolio of Your Name.",
+    title: "Koushik Pati — Data Scientist & AI Engineer",
+    description: "Portfolio of Koushik Pati.",
     images: ["/og-image.png"],
   },
   icons: {

@@ -1,24 +1,28 @@
-// FILE PATH: src/components/Footer.tsx
+import { getResume } from "@/lib/api";
 
-import React from 'react';
-
-export default function Footer() {
-  const year = new Date().getFullYear();
+export default async function Footer() {
+  const r = await getResume().catch(() => null);
+  const c = r?.contact ?? {};
+  const email = String(c.email ?? "").split(",")[0].trim();
+  const resumeUrl = process.env.NEXT_PUBLIC_RESUME_URL;
+  const links: [string, string | undefined][] = [
+    ["Email", email ? `mailto:${email}` : undefined],
+    ["LinkedIn", c.linkedin],
+    ["GitHub", c.github],
+    ["Resume", resumeUrl],
+  ];
 
   return (
     <footer id="contact" className="footer">
+      <h2 className="footer__title">Open to work. Say hello.</h2>
       <div className="footer-links">
-        <a href="mailto:you@example.com">Email</a>
-        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-          GitHub
-        </a>
-        <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
-          LinkedIn
-        </a>
+        {links.filter(([, h]) => h).map(([label, href]) => (
+          <a key={label} href={href} target={href!.startsWith("http") || href!.startsWith("/") ? "_blank" : undefined} rel="noopener noreferrer">
+            {label}
+          </a>
+        ))}
       </div>
-      <p className="footer-copy">
-        © {year} Koushik. Built with Next.js, LangChain, and FastMCP.
-      </p>
+      <p className="footer-copy">© {new Date().getFullYear()} {r?.name ?? "Koushik Pati"}</p>
     </footer>
   );
 }
